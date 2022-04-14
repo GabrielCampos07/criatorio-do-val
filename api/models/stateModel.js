@@ -1,4 +1,5 @@
-import { Model, DataTypes } from "sequelize/types";
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/database.js";
 
 class State extends Model { }
 
@@ -11,10 +12,9 @@ State.init({
         type: DataTypes.STRING,
         allowNull: false
     }
-})
-
-State.associations = function(models) {
-    State.belongsTo(models.User);
-}
+}, {
+    sequelize,
+    timestamps: false
+});
 
 export default State;

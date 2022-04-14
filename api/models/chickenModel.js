@@ -1,6 +1,7 @@
-import { Model, DataTypes } from "sequelize/types";
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/database.js";
 
-class Chicken extends Model {}
+class Chicken extends Model { }
 
 Chicken.init({
     name: {
@@ -15,12 +16,9 @@ Chicken.init({
         type: DataTypes.STRING,
         allowNull: false
     }
-});
-
-Chicken.associations = function(models) {
-    Chicken.hasOne(models.BreedChicken, {
-        foreignKey: 'breed_id'
-    });
-}
+}, {
+    sequelize,
+    timestamps: false
+})
 
 export default Chicken;

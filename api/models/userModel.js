@@ -1,4 +1,5 @@
-import { Model, DataTypes } from "sequelize/types";
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/database.js";
 
 class User extends Model { }
 
@@ -29,12 +30,9 @@ User.init({
         type: DataTypes.BOOLEAN,
         allowNull: false
     }
+}, {
+    sequelize,
+    timestamps: false
 })
-
-User.associations = function(models) {
-    User.hasOne(models.State, {
-        foreignKey: 'state_id'
-    });
-}
 
 export default User;
