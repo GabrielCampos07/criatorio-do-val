@@ -22,6 +22,14 @@ User.init({
             isEmail: true
         }
     },
+    city: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    country: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     role: {
         type: DataTypes.STRING,
         allowNull: false
