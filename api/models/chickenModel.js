@@ -15,6 +15,10 @@ Chicken.init({
     color: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    breed: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     sequelize,
