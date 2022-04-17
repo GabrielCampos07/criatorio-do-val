@@ -1,13 +1,12 @@
-import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 
-const Router = () => {
+const Router = (props) => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<Home/>} path="/" exact />
+                <Route element={<Home />} path="/" exact />
             </Routes>
         </BrowserRouter>
     )
