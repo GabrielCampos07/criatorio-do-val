@@ -1,8 +1,10 @@
 import * as React from "react";
-import Paper from "@material-ui/core/Paper";
-import { Chart, PieSeries, Title, Legend } from "@devexpress/dx-react-chart-material-ui";
-import { Animation } from "@devexpress/dx-react-chart";
+
 import '../../assets/css/components/graphs.css';
+
+import { Animation } from "@devexpress/dx-react-chart";
+import { Chart, Legend, PieSeries, Title } from "@devexpress/dx-react-chart-material-ui";
+import Paper from "@material-ui/core/Paper";
 
 export default function PieChart(props) {
 

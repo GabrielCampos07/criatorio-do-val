@@ -1,14 +1,17 @@
-import React, { useState, } from "react";
-import Header from "../../components/Header";
-import { lightBlue, deepOrange } from "@material-ui/core/colors";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import '../../assets/css/components/home.css';
+import React from "react";
+
 import Graphs from "../../components/graphs";
+import Header from "../../components/Header";
+
+import '../../assets/css/components/home.css';
+
+import Box from '@mui/material/Box';
 import { Container } from "@material-ui/core";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+
+
 
 
 const chartData = [
@@ -48,31 +51,15 @@ function a11yProps(index) {
 
 function Home(props) {
 
-    const [darkState, setDarkState] = useState(false);
-    const palletType = darkState ? "dark" : "light";
-    const mainPrimaryColor = darkState ? deepOrange[500] : lightBlue[500];
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-    const darkTheme = createTheme({
-        palette: {
-            type: palletType,
-            primary: {
-                main: mainPrimaryColor
-            }
-        }
-    });
-
-    const handleThemeChange = () => {
-        setDarkState(!darkState);
-    };
-
     return (
-        <ThemeProvider theme={darkTheme}>
-            <Header onClick={handleThemeChange}></Header>
+        <main>
+            <Header></Header>
             <Container className="container">
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs
@@ -95,7 +82,7 @@ function Home(props) {
                     <Graphs data={chartData} title={'contatos'}></Graphs>
                 </TabPanel>
             </Container>
-        </ThemeProvider>
+        </main >
     )
 }
 
