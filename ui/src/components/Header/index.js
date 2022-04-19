@@ -142,7 +142,7 @@ export default function Header(props) {
         {
             text: "Ovos",
             icon: <EggIcon style={darkState ? { color: 'black' } : {}} />,
-            onClick: () => console.log('teste3')
+            onClick: () => goTo('/eggs')
         },
         {
             text: "Contatos",

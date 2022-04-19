@@ -3,6 +3,7 @@ import './assets/css/base/_reset.css'
 
 import Home from "./pages/Home";
 import Chickens from "./pages/Chickens";
+import Eggs from "./pages/Eggs";
 
 const Router = (props) => {
     return (
@@ -10,6 +11,7 @@ const Router = (props) => {
             <Routes>
                 <Route element={<Home />} path="/" exact />
                 <Route element={<Chickens />} path="chickens" exact />
+                <Route element={<Eggs />} path="eggs" exact />
             </Routes>
         </BrowserRouter>
     )
