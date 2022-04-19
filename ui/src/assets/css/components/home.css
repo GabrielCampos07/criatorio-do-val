@@ -1,0 +1,22 @@
+.title {
+    position: relative;
+    bottom: 30vw;
+}
+
+.main {
+    height: 50vw;
+}
+
+.container {
+    position: relative;
+    top: 8vw;
+    text-align: center;
+}
+
+.container-chicken {
+    display: flex;
+}
+
+p {
+    font-size: 1.5vw;
+}
