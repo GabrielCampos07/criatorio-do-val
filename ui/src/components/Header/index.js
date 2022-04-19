@@ -19,16 +19,15 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import NightsStayIcon from '@mui/icons-material/NightsStay';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { orange, lightBlue, deepPurple, deepOrange } from "@material-ui/core/colors";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        display: "flex"
-    },
     toolbar: {
         paddingRight: 24
     },
@@ -70,8 +69,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create("width", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen
-        }),
-        height: "50vw"
+        })
     },
     drawerPaperClose: {
         overflowX: "hidden",
@@ -85,27 +83,15 @@ const useStyles = makeStyles(theme => ({
         }
     },
     appBarSpacer: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        height: "100vh",
-        overflow: "auto"
-    },
-    container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4)
-    },
     paper: {
         padding: theme.spacing(2),
         display: "flex",
         overflow: "auto",
         flexDirection: "column"
-    },
-    fixedHeight: {
-        height: 240
     }
 }));
 
-export default function Dashboard() {
+export default function Header(props) {
     const [open, setOpen] = useState(false);
     const [darkState, setDarkState] = useState(false);
     const palletType = darkState ? "dark" : "light";
@@ -123,6 +109,9 @@ export default function Dashboard() {
         }
     });
     const classes = useStyles();
+
+    const { onClick } = props
+
     const handleThemeChange = () => {
         setDarkState(!darkState);
     };
@@ -160,7 +149,7 @@ export default function Dashboard() {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <div className={classes.root}>
+            <header>
                 <CssBaseline />
                 <AppBar
                     position="absolute"
@@ -188,11 +177,15 @@ export default function Dashboard() {
                         >
                             Criatório do Val
                         </Typography>
-                        <Switch checked={darkState} onChange={handleThemeChange} />
+                        <Switch checked={darkState}
+                            onChange={handleThemeChange}
+                            onClick={onClick}
+                        />
+                        {darkState ? <NightsStayIcon /> : <WbSunnyIcon />}
                     </Toolbar>
                 </AppBar>
                 <Drawer
-                    variant="permanent"
+                    variant="temporary"
                     classes={{
                         paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
                     }}
@@ -218,7 +211,7 @@ export default function Dashboard() {
                         })}
                     </List>
                 </Drawer>
-            </div>
+            </header>
         </ThemeProvider>
     );
 }
