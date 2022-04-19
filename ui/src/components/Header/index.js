@@ -1,28 +1,30 @@
 import React, { useState } from "react";
+
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
+
+import AppBar from "@material-ui/core/AppBar";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ContactsIcon from '@mui/icons-material/Contacts';
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Switch from "@material-ui/core/Switch";
+import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
+import EggIcon from '@mui/icons-material/Egg';
+import FlutterDashIcon from '@mui/icons-material/FlutterDash';
+import HomeIcon from '@mui/icons-material/Home';
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import EggIcon from '@mui/icons-material/Egg';
-import ContactsIcon from '@mui/icons-material/Contacts';
-import HomeIcon from '@mui/icons-material/Home';
-import FlutterDashIcon from '@mui/icons-material/FlutterDash';
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NightsStayIcon from '@mui/icons-material/NightsStay';
+import { orange, deepPurple, deepOrange, lightBlue } from "@material-ui/core/colors";
+import Switch from "@material-ui/core/Switch";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import { orange, lightBlue, deepPurple, deepOrange } from "@material-ui/core/colors";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 
 const drawerWidth = 180;
@@ -91,6 +93,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const goTo = (path) => {
+    window.location.href = path
+}
+
 export default function Header(props) {
     const [open, setOpen] = useState(false);
     const [darkState, setDarkState] = useState(false);
@@ -108,9 +114,8 @@ export default function Header(props) {
             }
         }
     });
-    const classes = useStyles();
 
-    const { onClick } = props
+    const classes = useStyles();
 
     const handleThemeChange = () => {
         setDarkState(!darkState);
@@ -127,12 +132,12 @@ export default function Header(props) {
         {
             text: "Início",
             icon: <HomeIcon style={darkState ? { color: 'black' } : {}} />,
-            onClick: () => console.log('teste')
+            onClick: () => goTo('/')
         },
         {
             text: "Galinhas",
             icon: <FlutterDashIcon style={darkState ? { color: 'black' } : {}} />,
-            onClick: () => console.log('teste2')
+            onClick: () => goTo('/chickens')
         },
         {
             text: "Ovos",
@@ -179,7 +184,6 @@ export default function Header(props) {
                         </Typography>
                         <Switch checked={darkState}
                             onChange={handleThemeChange}
-                            onClick={onClick}
                         />
                         {darkState ? <NightsStayIcon /> : <WbSunnyIcon />}
                     </Toolbar>
