@@ -1,31 +1,22 @@
 {
-  "name": "criatorio-do-val",
+  "name": "index.js",
   "version": "1.0.0",
-  "description": "",
-  "main": "./server.js",
-  "type": "module",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon ./server.js",
+    "start": "nodemon ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GabrielCampos07/criatorio-do-val.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GabrielCampos07/criatorio-do-val/issues"
-  },
-  "homepage": "https://github.com/GabrielCampos07/criatorio-do-val#readme",
+  "description": "",
   "dependencies": {
     "body-parser": "^1.20.0",
     "express": "^4.17.3",
     "path": "^0.12.7",
-    "sequelize": "^6.19.0",
-    "sequelize-cli": "^6.4.1",
-    "sqlite3": "^5.0.3"
+    "sequelize": "^5.21.7",
+    "sequelize-cli": "^5.5.1",
+    "sqlite3": "^5.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
