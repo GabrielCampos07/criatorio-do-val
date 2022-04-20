@@ -40,10 +40,15 @@ const rows = [
 
 export default function Chickens() {
 
+    const style = {
+        position: 'relative',
+        top: '8vw'
+    }
+
     return (
         <main>
             <Header></Header>
-            <Container className="container">
+            <Container style={style}>
                 <div style={{ height: 527, width: '100%' }}>
                     <DataGrid
                         rows={rows}
