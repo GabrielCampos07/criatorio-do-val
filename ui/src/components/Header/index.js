@@ -117,6 +117,10 @@ export default function Header(props) {
 
     const classes = useStyles();
 
+    const url = window.location.href;
+
+    const styleIcons = { marginTop: "0.4vw" };
+
     const handleThemeChange = () => {
         setDarkState(!darkState);
     };
@@ -127,6 +131,16 @@ export default function Header(props) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const takeIcon = () => {
+        if (url.includes('chickens'))
+            return <FlutterDashIcon fontSize="large" style={styleIcons} />
+        else if (url.includes('eggs'))
+            return <EggIcon fontSize="large" style={styleIcons} />
+        else if (url.includes('contacts'))
+            return <ContactsIcon fontSize="large" style={styleIcons} />
+        else return <HomeIcon fontSize="large" style={styleIcons} />
+    }
 
     const itemsList = [
         {
@@ -180,7 +194,7 @@ export default function Header(props) {
                             noWrap
                             className={classes.title}
                         >
-                            Criatório do Val
+                            {takeIcon()}
                         </Typography>
                         <Switch checked={darkState}
                             onChange={handleThemeChange}
