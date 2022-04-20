@@ -147,7 +147,7 @@ export default function Header(props) {
         {
             text: "Contatos",
             icon: <ContactsIcon style={darkState ? { color: 'black' } : {}} />,
-            onClick: () => console.log('teste4')
+            onClick: () => goTo('/contacts')
         }
     ];
 
