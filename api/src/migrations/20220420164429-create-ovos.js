@@ -17,11 +17,11 @@ module.exports = {
         allowNull: false,
       },
       chocado: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       nasce: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: true,
       }
     });

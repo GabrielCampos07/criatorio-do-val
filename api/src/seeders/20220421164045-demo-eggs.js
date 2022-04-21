@@ -6,20 +6,20 @@ module.exports = {
       {
         pai: 'Biquinho',
         mae: 'Tieta',
-        chocado: '13/04/2022',
-        nasce: '14/05/2022',
+        chocado: '2022-04-17',
+        nasce: '2022-05-18',
       },
       {
         pai: 'Arroz Doce',
         mae: 'Giselle',
-        chocado: '20/04/2022',
-        nasce: '30/05/2022',
+        chocado: '2022-04-17',
+        nasce: '2022-05-18',
       },
       {
         pai: 'Preto',
         mae: 'Tieta',
-        chocado: '17/04/2022',
-        nasce: '18/05/2022',
+        chocado: '2022-04-17',
+        nasce: '2022-05-18',
       },
     ], {})
   },
