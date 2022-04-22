@@ -9,6 +9,7 @@ class GalinhasControler {
             return res.status(500).json(error.message);
         }
     }
+    
     static async getChicken(req, res) {
         const { id } = req.params;
         try {

@@ -9,6 +9,7 @@ class ContatosControler {
             return res.status(500).json(error.message);
         }
     }
+    
     static async getContact(req, res) {
         const { id } = req.params;
         try {

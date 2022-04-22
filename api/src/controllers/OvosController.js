@@ -9,6 +9,7 @@ class OvosControler {
             return res.status(500).json(error.message);
         }
     }
+
     static async getEgg(req, res) {
         const { id } = req.params;
         try {

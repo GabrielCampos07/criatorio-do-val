@@ -1,49 +1,61 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import Header from "../../components/Header";
+import api from "../../services/api.js";
 
 import { DataGrid } from '@mui/x-data-grid';
 import { Container } from "@material-ui/core";
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
+    { field: 'chickenName', headerName: 'Nome', width: 130 },
+    { field: 'chickenAge', headerName: 'Idade', width: 130 },
+    { field: 'color', headerName: 'Color', width: 130, },
     {
-        field: 'age',
-        headerName: 'Age',
-        type: 'number',
-        width: 90,
+        field: 'chickenGender', headerName: 'Sexo', width: 130,
     },
-    {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    },
-];
-
-const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
 export default function Chickens() {
+
+    const [chickens, setChickens] = useState([]);
 
     const style = {
         position: 'relative',
         top: '8vw'
     }
+
+    const firstRenderRef = useRef(true);
+
+    const loadData = () => {
+        api
+            .get("/galinhas")
+            .then((response) => {
+                response.data.forEach((item, index) => {
+                    setChickens(chickens => [...chickens, {
+                        id: item.id,
+                        chickenName: item.nome,
+                        chickenAge: item.idade,
+                        color: item.cor,
+                        chickenGender: item.sexo
+                    }]);
+                })
+            })
+            .catch((err) => {
+                console.error("ops! ocorreu um erro" + err);
+            });
+    }
+
+    useEffect(() => {
+        if (firstRenderRef.current) {
+            firstRenderRef.current = false;
+            return;
+        }
+
+        loadData();
+    }, []);
+
+
 
     return (
         <main>
@@ -51,7 +63,7 @@ export default function Chickens() {
             <Container style={style}>
                 <div style={{ height: 527, width: '100%' }}>
                     <DataGrid
-                        rows={rows}
+                        rows={chickens}
                         columns={columns}
                         pageSize={8}
                         rowsPerPageOptions={[8]}
